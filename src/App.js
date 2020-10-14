@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
+import { Header } from './components/header';
+import { Footer } from './components/footer';
+import { Content } from './components/content';
 
 class App extends Component {
   render(){
     return (
       <div className="App">
-        <h1>Hello World!</h1>
-        <h2>It is {new Date().toLocaleTimeString()} PM.</h2>
+        <Header></Header>
+        <Content></Content>
+        <Footer></Footer>
       </div>
     );
   }
