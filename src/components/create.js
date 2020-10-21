@@ -5,7 +5,7 @@ export class Create extends React.Component {
     render(){
         return (
           <div>
-            <h3>Hello</h3>
+            <h3>Hello from Create</h3>
           </div>
         );
     }
