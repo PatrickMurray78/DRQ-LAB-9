@@ -3,6 +3,8 @@ import './App.css';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
 import { Content } from './components/content';
+import { Read } from './components/read';
+import { Create } from './components/create';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -24,8 +26,8 @@ class App extends Component {
           <br/>
           <Switch>
             <Route path='/' component={Content} exact/>
-            <Route path='/read' component={Header} exact/>
-            <Route path='/create' component={Footer} exact/>
+            <Route path='/read' component={Read} exact/>
+            <Route path='/create' component={Create} exact/>
           </Switch>
         </div>
       </Router>
