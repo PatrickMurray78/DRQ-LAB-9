@@ -1,5 +1,6 @@
 import React from 'react';
 
+// The Create class will be used to create new movie entries
 export class Create extends React.Component {
 
     render(){
