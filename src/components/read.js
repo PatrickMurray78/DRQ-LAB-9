@@ -33,7 +33,7 @@ export class Read extends React.Component {
     render(){
         return (
           <div>
-            <h3>Hello from Read</h3>
+            {/*<h3>Hello from Read</h3>*/}
             <Movies mymovies={this.state.movies}></Movies>
           </div>
         );
