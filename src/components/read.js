@@ -12,9 +12,9 @@ export class Read extends React.Component {
   // This function uses axios which is a promise based HTTP client
   // We then use it to create a lifecycle hook that returns the JSON data
   componentDidMount() {
-    axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+    axios.get('http://localhost:4000/api/movies')
       .then((response) => {
-        this.setState({ movies: response.data.Search })
+        this.setState({ movies: response.data.movies })
       })
       .catch((error) => {
         console.log(error)
