@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 4000
 const cors = require('cors')
+const bodyParser = require("body-parser")
 
 app.use(cors());
 app.use(function(req, res, next) {
@@ -12,6 +13,11 @@ res.header("Access-Control-Allow-Headers",
 next();
 });
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false}))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.get('/api/movies', (req, res) => {
    
@@ -34,6 +40,13 @@ app.get('/api/movies', (req, res) => {
     res.status(200).json({
         message:"Everything is ok",
         movies:mymovies});
+})
+
+app.post('/api/movies', (req, res) => {
+    console.log('Movie Received!')
+    console.log(req.body.title)
+    console.log(req.body.year)
+    console.log(req.body.poster)
 })
 
 app.listen(port, () => {
