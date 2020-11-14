@@ -4,6 +4,8 @@ const port = 4000
 const cors = require('cors')
 const bodyParser = require("body-parser")
 
+// Use cors to read JSON data from the Node/Express server
+// This code will avoid a CORS error
 app.use(cors());
 app.use(function(req, res, next) {
 res.header("Access-Control-Allow-Origin", "*");
@@ -19,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 // parse application/json
 app.use(bodyParser.json())
 
+// Get data from /api/movies
 app.get('/api/movies', (req, res) => {
    
    const mymovies = [
@@ -37,11 +40,14 @@ app.get('/api/movies', (req, res) => {
             "Poster":"https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg"
         }
    ];
+   // Status was successful, send message and also the movies
     res.status(200).json({
         message:"Everything is ok",
         movies:mymovies});
 })
 
+// Make post request and console log the movie details to console
+// of the movie object passed up by the react app
 app.post('/api/movies', (req, res) => {
     console.log('Movie Received!')
     console.log(req.body.title)
@@ -49,6 +55,7 @@ app.post('/api/movies', (req, res) => {
     console.log(req.body.poster)
 })
 
+// Listen to port 4000
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
