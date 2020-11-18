@@ -25,6 +25,14 @@ app.use(bodyParser.json())
 const myConnectionString = 'mongodb+srv://admin:admin@cluster0.3oxak.mongodb.net/movies?retryWrites=true&w=majority';
 mongoose.connect(myConnectionString, {useNewUrlParser: true});
 
+const Schema = mongoose.Schema;
+
+var moviesSchema = new Schema({
+    title:String,
+    year:String,
+    poster:String
+});
+
 // Get data from /api/movies
 app.get('/api/movies', (req, res) => {
    
