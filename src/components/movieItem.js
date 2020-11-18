@@ -8,12 +8,12 @@ export class MovieItem extends React.Component {
         return(
             <div>
                 <Card>
-                    <Card.Header>{this.props.mymovie.Title}</Card.Header>
+                    <Card.Header>{this.props.mymovie.title}</Card.Header>
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
-                            <img src={this.props.mymovie.Poster}></img>
+                            <img src={this.props.mymovie.poster}></img>
                             <footer className="blockquote-footer">
-                                {this.props.mymovie.Year}
+                                {this.props.mymovie.year}
                             </footer>
                         </blockquote>
                     </Card.Body>
