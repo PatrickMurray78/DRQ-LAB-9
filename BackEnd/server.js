@@ -22,9 +22,11 @@ app.use(bodyParser.urlencoded({ extended: false}))
 // parse application/json
 app.use(bodyParser.json())
 
+// Open connection to our database
 const myConnectionString = 'mongodb+srv://admin:admin@cluster0.3oxak.mongodb.net/movies?retryWrites=true&w=majority';
 mongoose.connect(myConnectionString, {useNewUrlParser: true});
 
+// Declare Schema and initialise it
 const Schema = mongoose.Schema;
 
 var movieSchema = new Schema({
@@ -33,6 +35,7 @@ var movieSchema = new Schema({
     poster:String
 });
 
+// Create data model to represent the movie object we have created
 var MovieModel = mongoose.model("movie", movieSchema);
 
 // Get data from /api/movies
@@ -54,6 +57,7 @@ app.get('/api/movies', (req, res) => {
     //           "Poster":"https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg"
     //       }
     //  ];
+    // Read all data from databse and display it on app
     MovieModel.find((err, data) => {
         res.json(data);
     })
@@ -63,6 +67,8 @@ app.get('/api/movies', (req, res) => {
     //     movies:mymovies});
 })
 
+// Reads movie by id from database and returns the movie if id matched
+// movie from database
 app.get('/api/movies/:id', (req, res) => {
     console.log(req.params.id);
 
@@ -79,6 +85,7 @@ app.post('/api/movies', (req, res) => {
     console.log(req.body.year)
     console.log(req.body.poster)
 
+    // Write data to database
     MovieModel.create({
         title:req.body.title,
         year:req.body.year,
