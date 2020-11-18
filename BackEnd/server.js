@@ -3,6 +3,7 @@ const app = express()
 const port = 4000
 const cors = require('cors')
 const bodyParser = require("body-parser")
+const mongoose = require('mongoose');
 
 // Use cors to read JSON data from the Node/Express server
 // This code will avoid a CORS error
@@ -20,6 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false}))
 
 // parse application/json
 app.use(bodyParser.json())
+
+const myConnectionString = 'mongodb+srv://admin:admin@cluster0.3oxak.mongodb.net/movies?retryWrites=true&w=majority';
+mongoose.connect(myConnectionString, {useNewUrlParser: true});
 
 // Get data from /api/movies
 app.get('/api/movies', (req, res) => {
