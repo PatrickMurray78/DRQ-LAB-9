@@ -63,6 +63,14 @@ app.get('/api/movies', (req, res) => {
     //     movies:mymovies});
 })
 
+app.get('/api/movies/:id', (req, res) => {
+    console.log(req.params.id);
+
+    MovieModel.findById(req.params.id, (err, data) => {
+        res.json(data);
+    })
+})
+
 // Make post request and console log the movie details to console
 // of the movie object passed up by the react app
 app.post('/api/movies', (req, res) => {
