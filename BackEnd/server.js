@@ -77,6 +77,24 @@ app.get('/api/movies/:id', (req, res) => {
     })
 })
 
+app.put('/api/movies/:id', (req, res) => {
+    console.log("Update movie: " + req.params.id);
+    console.log(req.body);
+
+    MovieModel.findByIdAndUpdate(req.params.id, req.body, {new: true},
+        (err, data) => {
+            res.send(data);
+        })
+})
+
+app.delete('/api/movies/:id', (req, res) => {
+    console.log("Delete Movie: " + req.params.id);
+
+    MovieModel.findByIdAndDelete(req.params.id, (err, data) => {
+        res.send(data);
+    })
+})
+
 // Make post request and console log the movie details to console
 // of the movie object passed up by the react app
 app.post('/api/movies', (req, res) => {
