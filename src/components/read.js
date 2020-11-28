@@ -4,6 +4,13 @@ import axios from 'axios';
 
 // The Read class reads in the stored movies and sends them to the movies component
 export class Read extends React.Component {
+
+  constructor() {
+    super();
+
+    this.ReloadData = this.ReloadData.bind(this);
+  }
+
   // state contains an ampty array 'movies' which will contain all the stored movies to be displayed
   state = {
     movies: []
@@ -21,11 +28,21 @@ export class Read extends React.Component {
       });
   }
 
+  ReloadData() {
+    axios.get('http://localhost:4000/api/movies')
+      .then((response) => {
+        this.setState({ movies: response.data })
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+
   // This function creates a new array 'mymovies' and sends it to the movies component
   render() {
     return (
       <div>
-        <Movies mymovies={this.state.movies}></Movies>
+        <Movies mymovies={this.state.movies} ReloadData={this.ReloadData}></Movies>
       </div>
     );
   }

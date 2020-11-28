@@ -18,7 +18,9 @@ export class MovieItem extends React.Component {
         console.log("Delete: " + this.props.mymovie._id);
         
         axios.delete("http://localhost:4000/api/movies/" + this.props.mymovie._id)
-        .then()
+        .then(() => {
+            this.props.ReloadData();
+        })
         .catch();
     }
 
