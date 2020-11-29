@@ -28,6 +28,9 @@ export class Read extends React.Component {
       });
   }
 
+  // This function uses axios to create a lifecycle hook that returns the JSON data.
+  // Similar to componentDidMount which only gets ran once. This function gets ran whenever
+  // a movie is deleted to update the displayed movies
   ReloadData() {
     axios.get('http://localhost:4000/api/movies')
       .then((response) => {

@@ -13,13 +13,14 @@ export class MovieItem extends React.Component {
         this.DeleteMovie = this.DeleteMovie.bind(this);
     }
 
+    // This function deletes a movie from the database, it is called upon by a button click event
     DeleteMovie(e) {
         e.preventDefault();
         console.log("Delete: " + this.props.mymovie._id);
         
         axios.delete("http://localhost:4000/api/movies/" + this.props.mymovie._id)
         .then(() => {
-            this.props.ReloadData();
+            this.props.ReloadData(); // Reload data
         })
         .catch();
     }
@@ -37,7 +38,6 @@ export class MovieItem extends React.Component {
                             </footer>
                         </blockquote>
                     </Card.Body>
-                    
                     <Button variant="danger" onClick={this.DeleteMovie}>Delete</Button>
                 </Card>
             </div>
