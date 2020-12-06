@@ -81,6 +81,7 @@ app.get('/api/movies/:id', (req, res) => {
     })
 })
 
+// Reads movie by id from database and updates it
 app.put('/api/movies/:id', (req, res) => {
     console.log("Update movie: " + req.params.id);
     console.log(req.body);
@@ -91,6 +92,7 @@ app.put('/api/movies/:id', (req, res) => {
         })
 })
 
+// Reads movie by id from database and deletes it
 app.delete('/api/movies/:id', (req, res) => {
     console.log("Delete Movie: " + req.params.id);
 
