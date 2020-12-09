@@ -17,6 +17,7 @@ res.header("Access-Control-Allow-Headers",
 next();
 });
 
+// Serve the static files from the react app
 app.use(express.static(path.join(__dirname, '../build')))
 app.use('/static', express.static(path.join(__dirname, 'build//static')))
 
@@ -119,6 +120,7 @@ app.post('/api/movies', (req, res) => {
     res.send('Item Added');
 })
 
+// Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/../build/index.html'))
 })
